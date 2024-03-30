@@ -1,17 +1,17 @@
 version: '3.8'
 services:
   postgresql14:
+    container_name: postgresql14
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
       - ./data:/var/lib/postgresql/data # Persist data volume
     environment:
       POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: sergtsop
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
     networks:
-      - database
-
+      - my-network
 networks:
-  database:
-    driver: bridge
+  my-network:
+    external: true
